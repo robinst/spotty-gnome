@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=gjs INSTALL_DIR/spotty-gnome.js
+Name=Spotty
+Icon=INSTALL_DIR/icon.png
+Categories=Audio;AudioVideo
+Keywords=spotify;audio;player;spotty;gnome;stream
+Comment=Spotify web player with support for media keys
