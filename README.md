@@ -7,7 +7,7 @@ provide media key support (play/pause, next and previous).
 WebKitGTK+ 2 is required, which should be available in a recent GNOME
 release (3.8).
 
-![Screenshot](//raw.github.com/robinst/spotty-gnome/master/img/screenshot.jpg)
+![Screenshot](img/screenshot.jpg)
 
 Installing
 ----------
