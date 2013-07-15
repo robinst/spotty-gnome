@@ -16,6 +16,10 @@ Clone this repository and then run `install.sh`. It will just create a .desktop
 file in the appropriate location so that it has an icon and can be added to
 favorites/menus.
 
+Fedora should work out of the box.
+
+On Ubuntu the `gir1.2-webkit2-3.0` package must be installed (see GNOME 3 PPA).
+
 Contributing
 ------------
 
