@@ -4,7 +4,7 @@ const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
-const Webkit = imports.gi.WebKit2;
+const WebKit = imports.gi.WebKit2;
 
 const Spotty = new Lang.Class({
     Name: 'Spotty',
@@ -58,14 +58,14 @@ const Spotty = new Lang.Class({
         var cacheDir = GLib.get_user_cache_dir() + "/spotty-gnome";
         GLib.mkdir_with_parents(cacheDir, parseInt("755", 8));
         var cookiesFile = cacheDir + "/cookies.txt";
-        var context = Webkit.WebContext.get_default();
+        var context = WebKit.WebContext.get_default();
         var cookieManager = context.get_cookie_manager();
-        cookieManager.set_persistent_storage(cookiesFile, Webkit.CookiePersistentStorage.TEXT);
+        cookieManager.set_persistent_storage(cookiesFile, WebKit.CookiePersistentStorage.TEXT);
 
 	    Gio.DBus.session.watch_name("org.gnome.SettingsDaemon", Gio.BusNameWatcherFlags.NONE,
             Lang.bind(this, this._onBusNameAppeared), function() {}, null);
 
-        this._webView = new Webkit.WebView();
+        this._webView = new WebKit.WebView();
         this._webView.load_uri("https://play.spotify.com/");
 
         this._scrolled = new Gtk.ScrolledWindow();
