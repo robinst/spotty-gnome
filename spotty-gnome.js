@@ -12,16 +12,38 @@ const Spotty = new Lang.Class({
     _init: function() {
         this.application = new Gtk.Application();
 
-        this.application.connect('activate', Lang.bind(this, this._onActivate));
         this.application.connect('startup', Lang.bind(this, this._onStartup));
-    },
-
-    _onActivate: function() {
-        this._window.present();
+        this.application.connect('activate', Lang.bind(this, this._onActivate));
     },
 
     _onStartup: function() {
+        this._buildMenu();
+    },
+
+    _onActivate: function() {
         this._buildUI();
+        this._window.present();
+    },
+
+    _buildMenu: function() {
+        let quitAction = new Gio.SimpleAction({ name: "quit" });
+        quitAction.connect('activate', Lang.bind(this, this._onQuitActivated));
+        this.application.add_action(quitAction);
+
+        let builder = new Gtk.Builder();
+        let ui = "<interface>" +
+                 "  <menu id='app-menu'>" +
+                 "    <section>" +
+                 "      <item>" +
+                 "        <attribute name='label' translatable='yes'>_Quit</attribute>" +
+                 "        <attribute name='action'>app.quit</attribute>" +
+                 "        <attribute name='accel'>&lt;Primary&gt;q</attribute>" +
+                 "      </item>" +
+                 "    </section>" +
+                 "  </menu>" +
+                 "</interface>";
+        builder.add_from_string(ui, ui.length);
+        this.application.set_app_menu(builder.get_object('app-menu'));
     },
 
     _buildUI: function() {
@@ -51,6 +73,10 @@ const Spotty = new Lang.Class({
 
         this._window.add(this._scrolled);
         this._window.show_all();
+    },
+
+    _onQuitActivated: function() {
+        this.application.quit();
     },
 
     _onBusNameAppeared: function(connection, name, nameOwner, data) {

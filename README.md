@@ -25,7 +25,6 @@ very fast.
 Some things to do:
 
 * Stability
-* Add Ctrl+Q
 * Application menu (e.g. for navigating back to web player)
 * Remember window position and size
 
