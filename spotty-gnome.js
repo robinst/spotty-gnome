@@ -12,6 +12,7 @@ const Spotty = new Lang.Class({
     _init: function() {
         this.application = new Gtk.Application();
 
+        GLib.set_prgname('spotty-gnome');
         this.application.connect('startup', Lang.bind(this, this._onStartup));
         this.application.connect('activate', Lang.bind(this, this._onActivate));
     },
