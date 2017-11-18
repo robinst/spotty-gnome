@@ -1,3 +1,7 @@
+**NOTE:** Nowadays, there's the excellent Flatpak project. I recommend using the Spotify client from there instead, see here: https://flathub.org/apps.html
+
+---
+
 Spotty Gnome
 ============
 
